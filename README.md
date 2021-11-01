@@ -14,6 +14,9 @@ To build and run you need to follow these steps:
 ## Changes
 Here are some changes one could make:
 
+I realized now that I have forgotten to "give the end user feedback concerning
+very slow internet connection". I have however made sure the user gets errors if the search gives errors. If this is really a must, I will have to look at this another day, since I don't have time today.
+
 1. See why the API only gives back 10 of each (maybe only for premium access).
 2. Add endless scrolling to search results.
 3. Add Webview - to show the show summary that comes in html in it's original format.
