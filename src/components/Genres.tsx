@@ -24,6 +24,8 @@ const Genres: React.FC<GenresProps> = (props) => {
 
 export default Genres;
 
+const textColor = '#222222';
+
 const styles = StyleSheet.create({
   genreTag: {
     borderRadius: 10,
@@ -35,5 +37,6 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     fontSize: 16,
+    color: textColor,
   },
 });

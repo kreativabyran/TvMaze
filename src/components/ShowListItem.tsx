@@ -45,6 +45,8 @@ const ShowListItem: React.FC<Props> = (props) => {
 
 export default ShowListItem;
 
+const textColor = '#222222';
+
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
@@ -67,5 +69,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
+    color: textColor,
   },
 });

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Alert,
   FlatList,
   Image,
-  ListRenderItem,
   ListRenderItemInfo,
   StyleSheet,
   Text,
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const [query, setQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ShowResult[]>([]);
 
-  const [{ data: searchData, loading: loadingSearch }, refetchSearchResults] = useAxios<Array<ShowResult>>(
+  const [{ data: searchData, loading: searchLoading, error: searchError }, refetchSearchResults] = useAxios<Array<ShowResult>>(
     {
       url: `${SEARCH}${query.length > 0 ? query : 'a'}`,
     },
@@ -37,6 +37,15 @@ const Home: React.FC = () => {
     return <ShowListItem item={item} />;
   };
 
+  if (searchError) {
+    Alert.alert(
+      'Search Error',
+      'There was an error while searching...',
+      [
+        { text: 'OK', onPress: () => setQuery('') },
+      ],
+    );
+  }
   return (
     <View style={styles.container}>
       <TextInput
@@ -50,7 +59,7 @@ const Home: React.FC = () => {
         renderItem={Item}
         keyExtractor={(item) => item.show.id.toString()}
         onRefresh={() => refetchSearchResults()}
-        refreshing={loadingSearch}
+        refreshing={searchLoading}
       />
       <View style={styles.row}>
         <Text style={styles.copyright}>This app is powered by </Text>
@@ -62,6 +71,8 @@ const Home: React.FC = () => {
   );
 };
 
+const textColor = '#222222';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,10 +81,13 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 9,
     borderWidth: 1,
+    borderColor: 'lightgray',
     padding: 10,
+    backgroundColor: 'white',
   },
   copyright: {
     textAlign: 'center',
+    color: textColor,
   },
   row: {
     padding: 5,
