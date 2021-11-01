@@ -1,0 +1,76 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:json/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jest/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react-native", "@typescript-eslint", "react-hooks", "import", "json" ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect 
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }, "ignoredNodes": ["JSXAttribute", "JSXSpreadAttribute"] }],
+    "react/require-default-props": 0,
+    "prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
+    "react/prop-types": 0,
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "react/jsx-props-no-spreading": 0,
+    "linebreak-style": [ "error", "unix" ],
+    "react-native/no-unused-styles": 1,
+    "semi": [ "error", "always" ],
+    "max-len": ["warn", { "code": 180 }],
+    "react/jsx-filename-extension": [ 2, { "extensions": [ ".tsx" ] } ],
+    "import/prefer-default-export": 1,
+    "import/extensions": [ 2, { "graphql": "always" } ],
+    "no-use-before-define": "off",
+    "no-underscore-dangle": [ "error", { "allow": [ "_id", "__typename" ] } ],
+
+
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "react-native/no-inline-styles": 0,
+    // would like to have these but they don't work well..
+    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/no-unsafe-call": 0,
+    "import/no-cycle": 1,
+    "@typescript-eslint/no-unsafe-return": 0,
+    "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/unbound-method": ["error", { "ignoreStatic": true }],
+    "global-require": 0,
+    "comma-dangle": ["error", "always-multiline"],
+    "no-nested-ternary": 0,
+    "no-void": ["error", { "allowAsStatement": true }],
+    "one-var": 0,
+    "@typescript-eslint/no-empty-function": [1, {"allow": ["arrowFunctions"]}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["src/**/*.test.ts", "src/**/*.test.tsx"]}],
+    "jest/expect-expect": 2,
+    "react/boolean-prop-naming": ["error", { "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+", "propTypeNames": ["bool", "mutuallyExclusiveTrueProps"] }],
+    "quote-props": ["error", "consistent-as-needed"],
+    "react/display-name": 1,
+    "no-shadow": 1,
+    "jsx-quotes": ["error", "prefer-single"],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": true, "classes": true, "variables": false }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
